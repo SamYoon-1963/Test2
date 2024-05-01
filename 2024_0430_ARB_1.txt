@@ -1,0 +1,178 @@
+Unknown 0:09
+And they're all based on the profile profile profile Salesforce is you'd have to go into the Salesforce console equivalent or API. Provider Portal, we've got a column that you can take with the sequel or stored proc or think Java code. And, you know, all of the you could do all of these one by ones, quote keeps going down EP no internal your internal users yet aside from the fake internal users we have so if you had your generic AD AD report, and you had your application specific active user report in a standard format, then you basically want to have an adapter which is okay, start disabling being like plug in the sleep disable, pretty user that I find and that sleep disable would be like okay, see that adapter would be like, this is probably best to do using a Java and SQL pattern versus a string and I'm probably all better to do like that.
+
+Unknown 1:27
+When I probably go back to is, you know, we've been dealing I think it's been my first issue with high trustee users, and the management of these lists and the disconnects. I think I think I first hit it in an EY on it like five years ago. So what I probably say is that from an architectural perspective, you know, we can we can develop patterns for this and it's probably good from an actual problem point of view. Could you get back up to the boxy flow? In a given any given month, how many times with that arrow hit. By now we should have enough information from our high trust audits and our knowledge of the system to know if that hits once a month or 100 times a month.
+
+Unknown 2:26
+He so like I'm like so I guess like high trust gives us only a portion of it because like if you're like the UA ours that get get done like like quarterly or whatever. You know, we like for instance, like even in the portal realm, you know, some of those go directly to money AG, but, for instance, like I've seen, like, you know, it's not it's not going to be a lot of user, I'd see like, you know, like, somewhere between like, you know, 1220 users that are they end up like getting expired. I think I think it's roughly about that. If
+
+Unknown 3:07
+you think about that you ar review that arrow that you have to go into the middle box. You could use this automated use of disablement not just for the ad check, but also for the UA AR review, right? It just you probably want to close the loop on the on the ad link, because if you just go into the app and ad still has an active No, it's not great. You probably won't. You probably want to have it. Have a link that somehow goes back and it's awkward to. So my question is, is what will I get the desire to be able to move towards this is from a non architectural perspective, is this a big enough problem for 12 users a quarter or you know 10 disconnects a month? To be able to have a job have the have the two reports created? Have the Java handler and start plugging in application by application disables? Do you guys feel that right now that it is worth it? Or is this just something where it'd be like there are probably other ways but this is what we were asked to do.
+
+Unknown 4:16
+I think the I think the the for us, I mean, the issue becomes, you know, the, you know, but worse than this time is getting spent on this on these on these cleanups. And the idea would be you know, hey, we'd like to walk into an audit, you know, cleaner and be like even on you ar we don't want to be spending time on this. And so it's an investment in time from a manual perspective of having to go through and like a create tickets be like having like Melanie agico and an execute scripts for us or whatever. That's I'm talking especially just from a Portillo's perspective. I don't know You know, I think I'm not sure how clean the data is on the on the CPU side. I'm sure that there's there's similar issues because they're gonna separate from the same stuff that portal is because people are not going to submit the tickets that they should to, to get the stuff cleaned up. And I'm sure like even to then, you know, like, you know, precautionary you could say something really, you know, if you if you have any insight into that like about how often like even users have to be like cleaned up.
+
+Unknown 5:25
+At Yeah, but even user clean up that that's something else the the access to appropriate and user settings and the management that's, I'll
+
+Unknown 5:34
+tell you about as disabling from that term user. Yeah. The permissions I don't I can't say to speak to you, but yeah,
+
+Unknown 5:41
+don't get me wrong. I floated a proposal that essentially breaks the the user model that we have right now, which is application specific. So if you go back into the Word document, let's make a couple of assumptions. One of the things that we assume is that, you know, when we have to build a report up, it's about 200 hours and you know, what I'm assuming right now is that first hop line in your box, we've got all those reports working because we need them pride trust. So that's, that's a zero for this effort. The comparison to users active versus disabled. That's trivial. Not sure how would happen seems like a report a report based on reports. But if we want to put this in two common framework and a common framework handler, then plugins, applicant, Fusion Applications that affect application specific, you probably left with, you know, strictly the I'm not sure how I'm not sure exactly. How we get unity done. That'd be interesting.
+
+Unknown 6:40
+Unity they have to they have to do something specific for unity. And for sales Nice. Those are two applications are kind of like outliers. And so there's a way for them to set a flag within Unity. If Yeah, if we
+
+Unknown 6:54
+you know, when you when you speak of this, is it a person setting a flag? Is there a systematic way to do it because I know in Salesforce, it can be done systematically?
+
+Unknown 7:05
+Yeah, like, initially, when I was speaking with John about it, he was saying that doing it, he's talking about doing it manually if we just produced a file, and asked him if he could do it in an automated way, and it sounded like he could.
+
+Unknown 7:19
+Okay, so you know, what this what this says to me is that, you know, you take the output of that comparison, you put it to a generic handler, that's, that's component one. Build and then you have application specific turnoffs. Where you know, SQL SQL SQL is probably about 200 hours a shot, you know, to start is to disable these people as a rough guess, because it's again, Java income, maybe the Salesforce and ug, you have to you have to pick that up. So if you look across all the applications, you've got 112 them here and account from
+
+Unknown 7:54
+Yes, my Yeah, it's one Yeah.
+
+Unknown 7:56
+You're looking at about 2500 hours to to go across all the applications and go into a generic framework. And then start plugging in application that application which is, it's an investment and like you said, it starts it stops the Hydras bleep. Yeah,
+
+Unknown 8:16
+like I'm like, Well, we were talking about with the with the SSI s piece. Like in a proposal, what we're going for, we're saying that that you know, the bill for portion of his 1430 hours, the SSIs package. Yeah, but and, and I think that includes within this it does include some hours for the Salesforce to do their piece so they can automate a disablement and same thing for for unity.
+
+Unknown 8:49
+So, what I'm what I'm not sure about is a and can you go back up a side if you don't mind? My mom. Oh, wait, will probably the biggest thing is, you know, I don't think it should be in a single single release. Like, I definitely think it should be phased i The I'm not sure about my disconnect versus your disconnect in terms of what I see. Like I see the two s's I see I see the SSIs report. I see the multiple reports from application. I see the comparison. But then I see a lot of I see a generic framework. And then I see application specific turn offs, and I think that I'm missing something right. You got to 400 hours.
+
+Unknown 9:43
+Yeah, so like, okay, so So for instance, like when you go into it, right, like each if, depending on what kind of approach we take, right? Like if we do it in SPSS, everything's happening in the database that we that we want. We're trying out people in the human users table, this is how we're doing it. We talk about like the specifics of like, what needs to happen, and then to, you know, preserve audit data by inserting a record this table sampling Provider Portal, we're doing this so these are all like, you know, database tables that have to be touched unities and outlier, Salesforce and outlier claims one and take 90 and provide an ID at all, same table. So that I mean, that was the I think the the basis behind saying hey, if we had an SSIs package that was doing this, we already had a developer who has started to look into this because they were already looking to try to address the problem of of intake 98 provider 98 and claims one and so we can leverage that data coming out of that, that ad export and do the comparison all database, side right? And and doing the tech cleanup. Now, like if we wanted to do like what you're talking about, you know, that's more like a more refined approach where we take and we have components that are like a generic component, say, Hey, I'm here to get to grab at data and do can do comparisons. Oh, and here's some adapters that allow me to say hey, you pass it into this adapter, this this functionality, and each adapter will do its job in terms of like queue manager, CPM provider or what have you, right. You know that I would agree that that's more refined approach. And, and definitely more more flexible and more costly. You're getting you're getting a more refined, more sophisticated approach. more robust approach, is that if you want it to expand it it's going to be easier to expand probably at a higher cost, though.
+
+Unknown 11:44
+So when we get to help desk request to disable someone's access and key manager, yeah, depending on how we go about that. If it comes through Oscar, if it comes through, you know, personnel terms or anything else. That is that is delete does a person sit down and run that update script right there that you that you have in front of us?
+
+Unknown 12:06
+So So I think um, from from a queue manager perspective, I want to say, and Prakash correct me if I'm wrong, you guys do that to the UI?
+
+Unknown 12:14
+That's correct. That's correct. To make a credit check the deeper if the count is very high, it's kind of not productive to go and then do such a chooser and do it. He might do it in our in our script, but I check with them but but if it's just one or two, we just use the way to Yeah.
+
+Unknown 12:38
+Yeah. So I mean, this is this is one of the if we had a more advanced RPA team that had that had a lot more jobs under the belt, I'd say feed into that. And I'd say if we already handle queue managers as labels via the UI, you automate that process and in your feed this and so that way. You're, I guess the problem that I'm trying to solve is a common approach instead of disparate. In and when we bring this up, we should I'm uncomfortable having even if this is the underlying code from that UI tickbox I'm uncomfortable having two ways of getting the same thing done. When it comes to the level I trust. Now, that makes sense be done, you know, but so if we were willing to move, but you know, when we get those helpdesk requests, there's no reason why we can't run this script. Based on the Help Desk requests to write you could just feed into that instead of having a comparison add to it too happy and you could just feed it and being like, hey, disabled Bob Bob gets disabled when the script runs tonight. And instead of going in and choosing the UI, this update, which happens we just have two ways of feeding in that list.
+
+Unknown 14:00
+So you would you would, so if you had like so you would have some sort of process that identifies those gaps, right? Yeah. I'm sorry. Go ahead.
+
+Unknown 14:11
+Go back to the flow, if you don't mind, just for a moment. Sure. Sure. Sure. So one of the things that, you know, I try to push people to do is look towards common components. And the SSIs is, you know, the common component is extracting from ad then list of expired users. But But what we're bringing up the common disable user because of the helpdesk request, you can inject it into this process as well. It's just where you could inject it into my list in my my compare expired users. Well, he's not expired an ad yet but he's about to be and now I've got a comparison. So really, it's that line into it that you probably you line into the middle box. So you do want to inject the ticket base disabling Okay, and that's, that's part of a common component that at least right now, I'm not saying this is the Wii. So when I looked at that it's common components and generic adapters towards multiple systems. And that's what I'm not seeing it. I'm seeing that the job can get done. But
+
+Unknown 15:18
+it's so the benefit of what you're saying though, is like coming out from a helpdesk ticket. Now we're going to be adding like manual steps to get there. Right. So we but but the benefit would be that I guess that we also have then like, potentially lose some may, I guess, maybe sort of an audit trail and helped us regarding what we're doing.
+
+Unknown 15:42
+Yeah. And then it comes right and then it's a matter of, you know, for this automated disablement, or the or the helpdesk disable. Now, I have two different audit trails, right. I helped us trail for the for the automated one, for the non audit for the for the requested one, and I have the end of the audit trail for the automated one, and maybe that's okay, maybe maybe people are okay with it, so long as there is an audit trail. They don't have to be the same one. I get that. Yeah. So I'm I'm uncomfortable with this because of I'm uncomfortable with it, not because of the automated nature of it, but because it doesn't do what we do now. Where it does doesn't do it in the way we do now. And we have the capability to do it and have a and without knowing how many gaps there are. Again, it's I do apologize for not having I couldn't find my notes and I can't find them now. In terms of the overall approach, I get it, you know, you you you have the script, you run a report, you have a comparison, then you start running SQL scripts. It's not good. You should it can get the job done, but this this isn't something that we should do. And at least not not the way we have it right now. Because it doesn't
+
+Unknown 17:21
+I never was able to go forward into my user Kareem discussion with Kim and others.
+
+Unknown 17:26
+Yeah, so. Okay, so So, so Okay, so an SSS package you don't think is the ideal approach to this? Well,
+
+Unknown 17:36
+I guess I guess it's I guess it's the nature of SSIs. You know, which is it's not that it's the wrong approach. I
+
+Unknown 17:46
+mean, like, because I consider this like, right now, for Portal when we're disabling users on a regular basis. We've got a title job running a stored procedure, or actually an Oracle package I should say, right, but Sir procedure with it. So I mean, like, this is always like happening in one sense in one place, maybe not. So um,
+
+Unknown 18:08
+and when I hook into that
+
+Unknown 18:15
+because that's a time based thing. Me it's feasible to do it from from an Oracle perspective as well.
+
+Unknown 18:24
+Yeah, first. He did. Can I ask a question just tend to follow. So this should concern the identification of the users that are a mismatch, or is it the expiration of that my
+
+Unknown 18:38
+concern is having multiple ways of doing the same thing. Rather than trying to come up with a universal disable, you know, the end goal, the end goal, this should be I push about and somebody gets what if somebody gets disabled from every application? That should be the end goal. And instead of moving towards that, we're part we're kind of lurching halfway into it.
+
+Unknown 19:07
+Yeah, I think I think part of the part of the like, strangeness of this whole thing though, and even why this is even considered is because there's been on the table for like years now literally years, since 2014 15, that I'm aware of, oh, let's bring an I am solution. Now. Here we are. 2023 We're almost 10 years later.
+
+Unknown 19:33
+Oh, don't get me wrong.
+
+Unknown 19:34
+I am solution hasn't occurred.
+
+Unknown 19:36
+No, it's I part of the presentation that I wasn't able to present was that architecture takes it over from security and infra because it's like you said it's, it keeps getting stalled. And I, oh, I would let it get stalled. But I it'd be more requirements gathering and solution finding. I agree with you. No, I agree with you. It's, it's plateaued a number of times
+
+Unknown 20:04
+because they do this, what I'm seeing is, I think two components. One is a there's an audit perspective of what stuff is out of sync. Okay, and then there's, hey, how do we go through and automate the expiration of that? Right, so So my question is for you from an audit perspective and identify stuff out of sync. Are you concerned with this architecture or are you concerned, or is that the whole thing or are you only concerned about the automatic expiration things?
+
+Unknown 20:38
+You don't I'm going with assumptions that the better we're gathering data correctly, both expired from a DEA or the expired us from the get application tables, but again, those are probably when I hear that amount of hours that we spend a DI trust there's something that breaks my mind because so much of these should be canned reports. And and there's something that because I haven't, because I haven't been involved in the Hydrostone reports. It's something where it just be like this seems wrong. It seems like sequel and reports and we're not addressing it so right now. I'm not addressing my own. There feels like something wrong in this and I'm just going with the assumption.
+
+Unknown 21:19
+Like let's take this thing out of the picture for right now. Right. Let's not even talk about like automation of this whole thing. The current process that people are supposed to follow is that they're supposed to submit an Oscar or web helpdesk ticket depending on the application. To disable the users. Unfortunately, that is not consistently occurring. And so as a result, we end up with the problem that we have, where we have it in, you know, in the UAE ER or in or finding being found in HyTrust, right. And so so we have that, that lingering problem where you know, we then we have to go back and we have to do our cleanup and consistently we you know, audit after audit, we have to do it and there's stuff that happens even in between audits where like we were not trying to address but, you know, like we're like in claims to shadow, you know, they're doing sort of audits on their system and trying to make sure that what should the user have access? Or should they even have the permission that they have, you know, should it be less lesser permission or whatever? And so, that kind of stuff goes on to and you know, I mean, the idea is that if you can at least remove the piece of it out, since you know that the user is expired at, they shouldn't have access, right? So you should do some sort of cleanup and you should figure out how you can do that cleanup. And you shouldn't have to rely on anybody's input to do the cleanup. If you know that the user should be expired. It shouldn't matter about any but
+
+Unknown 22:51
+yeah, I mean, eventually will and I think it's happened before where somebody accidentally accidentally gets turned to the ad. But this is that what you're describing. That's why I'm okay once we get up to the compare expired users because again, if that was happening, that's that's a it's a lookup it's happening on a daily basis problem goes away. The end You know, it's it's
+
+Unknown 23:16
+hard to compare expired users and like get a report for per application, per se. You know, gives you the the data to say, hey, now I know what I'm dealing with, right?
+
+Unknown 23:28
+Yeah, like,
+
+Unknown 23:29
+I know, these users are their turn an ad to not turn in the application. Okay, man, you still need to then take action on it.
+
+Unknown 23:38
+Yeah, and I guess for for me, it's sort of you know, and that's why the the top part I'm okay with the middle part is the where it goes to adapters. It goes to two ways of getting the same thing done. And that's where, yeah, sort of works, but why should we move to having one way to disable provide importantly users or key manager event?
+
+Unknown 24:05
+To feeds? Yeah, ideally, yeah. Ideally, like, Well, yeah. Ideally, if if ideally like if the if Yeah, you could say then that okay, well, you know, once something like this some solution is in place, then you don't even have to put in your Delete Oscar for or delete, you know, for pork for a report or delete, you know, ticket you can count on the, on the expired process to do it.
+
+Unknown 24:38
+Then, so, that
+
+Unknown 24:40
+would be that would be ideal, right? I mean, yeah.
+
+Unknown 24:42
+And that's the that's the that's a level of uncomfort you know, so when I take a look at this, it's a as an intermediate state state, I'm more okay with it. There's an end state but again, it's
+
+Unknown 24:57
+it's something so legs like we had an IAM solution there. For instance, how would I am solution handle this? It would essentially do, it would go in there and do this, the sequel updates that we're talking about right now, in order to achieve it?
+
+Unknown 25:11
+Well, in a true I am solution you cut you start to remove all those user tables and start to start to source them from the I Am. So yeah, what you're the other way you're just grabbing you have to change all your applications, though. Yeah, right. And that's that's part of the expensive yeah, there's it'd be that's part of the problem that I am always, you know, caught up on this. The second part of what you're bringing up though, the more likely is you would run all of these scripts and you would start being like, hey, user gets disabled, start turning them off and all of our applications. So I'm uncomfortable with this, because it's not an end state solution. It's not even kind of a wrapper. It's sort of getting a job done. And I'd rather see it if I knew that we were going to move all of our disables to using the framework that you have in place for this. I'd be I'd be more in line with it. That being said with the problem that I know that you've been tasked with I don't have an architectural problem with it. I think that you've been tasked with the wrong problem. In the problem is, you know, getting to one, click a button and people get turned off the person get turned off and all the applications and that's the problem that I think that should have been in the data and push happens via helpdesk asker this automated process and that's the problem that I think that we should have been solving. So coming back to this, I don't have a problem with going forward. I'll put caveats on it. I guess this will come into a Thursday scoped scoping discussion meeting. But I will I will bring this up when you present it. This is this is sort of an intermediate one. I do want to go into rehab we
+
+Unknown 27:01
+Yeah, that's cool. That's cool. Yeah, we spend a lot on this.
+
+Unknown 27:05
+And I try to find the old notes. I'm sorry. Good.
+
+Unknown 27:08
+Do we have Iam solution right now in the organization? Do we use it? Right? No, it's very soon. Before we get that right.
+
+Unknown 27:19
+Everyone opera 10 years that I know of? Yeah. But it whatever
+
+Unknown 27:23
+it's been owned by Yeah, it's an even when we get a get a show John the the user domain problem but this is part of it. But now we don't we don't have a functional user but let's let's agree up so the one that things about the reopen this talk is it's always been kind of interesting to be I think I've asked this question in the past and I'm gonna tell you what do you guys can give me a quick answer. That'd be great. Why did we Why did we do this back in the day?
+
+Unknown 28:03
+I don't think okay, so I was not around for this but this is my assumption based on what I've seen. Okay. So we asked was the first flood have occurred to get created and Provider Portal. Now, I believe at the time to save time and money to get it out there. That they went to this talk route to orchestrate things instead of you know, doing the development within the actual portal stuff, portal and roles. And so I really believe that that was the approach because they were dealing with different consulting organizations that are trying to get something out there. They're trying to do something beyond just intake. 98
+
+Unknown 28:45
+Yeah, kind of kind of like that. It's kind of what I've heard from people is basically Waterstreet was basically the major owner and they put their leadership in place and that leadership. Honestly, they were doing things to go through and check things off as fast as possible, versus doing them the right way. Yeah, example the 272 71 solution. Awful. But they went through and did checkbox and say, Hey, hands off because they were trying to hit their bonuses and resell the company. So that's kind of Yeah, so yeah, that makes a lot of sense. Their focus was not a long term architecture. It was a hey, we want to go through and get certain achievable things done to go through and say boop, boop, boop, there checkbox. So from what I understand is that they basically couldn't get it to work and they're like, hey, they scrambled and they said, somebody, you know, but we have been called Binstock and then does talk about that and said that that's before anybody. I think any I don't even think any employees were here at the time. Jeevan jaybird might have the longest longevity of everybody here.
+
+Unknown 29:56
+Yeah, Mike you're correct. Possibly it is to orchestrate the entire reauthorization flow through this talk. Yeah,
+
+This transcript was generated by https://otter.ai

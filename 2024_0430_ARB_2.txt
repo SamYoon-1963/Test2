@@ -1,0 +1,226 @@
+Dave 0:00
+So I think the other thing is is like if we have if we go to touch certain stuff with a with a desktop client, right now we've got to pass on on all the the client, and if we touch it, it's going to it's going to balloon a bunch of sonar cube like issues that are like quietly waiting there. So the moment we
+
+Unknown 0:25
+made this talk has been having issues right, sorry. Sorry to interrupt recently, right. So yeah, I think this will do it more capacity or other eligibility issue that I've been having recently, right. So free up the load on them.
+
+Unknown 0:38
+I'm not a big believer in you know, Bug count is has to be updated. I looked at that as we know the the last bullet point is something that Sam and Kumar geven have heard my spiel before. But it's, you know, we had we had different team who was behind on their library count. And they were like, Yeah, can we create a new component be like, Well, you've chosen not to keep the Java version and library version up to date. I don't think you need to have an architecture change because we made that choice. And I'm like, that last bullet point is sort of it the last bullet point is sort of wildly for me, because it's sort of like yeah, if we're touching it, it is actively like, well, it's connected now. It's just we're ignoring it, because it's just kind of idle but the other points I get it, it makes sense. I don't know if investing where's my math? I don't know if investing 70 times 700 I don't know if he investing in $50,000 gets us all that much. You know, the 700 hours to get this done. But I can see the alert to it. You know, but it's you speed things up for a result by one to four seconds. Okay. It's good to use your benefit. Yeah,
+
+Unknown 2:03
+I don't even think that's compelling. At all. Honestly, from my personal life, it's not it's not compelling. Like one to four seconds nobody will ever know notice and no one will ever care. Not in a day, not in a month, not in a year. If you add up all the seconds, right? The only only value add here for me is that we do have failures within this talk occasionally. And from a business perspective, the manual work they have to do to reenter the Eos. While we while we haven't gotten a number on it from them, there's a there's a cost to that right. They had to go in and actually manually re entered them. We give them the data, they're going to manually enter it. And that's where that's where I think there is some value. Yeah,
+
+Unknown 2:49
+I think we had two failures since the beginning of the year and we struggled to go and find data from the logs and piece everything together roles team and Portal team and gave it to the product teams. It's a beam
+
+Unknown 3:02
+can can you go back to the light because I gotta go back. Sorry question. It might go back to the flow layer that's
+
+Unknown 3:09
+Rama Rama if you can show me
+
+Unknown 3:18
+Okay, so up until the K up until once user clicks on the real portal. Okay, up up to there. You're basically you're, you're definitely simplifying everything and just saying hey, direct interaction from that. But my question then is, once they do that, is this it looks like it potentially it this may be where Dave Dave says, Hey, what's going to be our orchestration, direction the future. It looks like you might actually be adding Prime Time to the processing or it might be better than here. Portal is gonna go through and call the service, get the answer back then portal is then going to then call and create a queue manager of that is the user waiting for that that whole time for those sequential activities?
+
+Unknown 4:09
+What's gonna be next or is it a
+
+Unknown 4:13
+x actually know this one is called once they click the record button, right? These are the sequential steps that we put in. This is once they click the record button, and this is once they click the Confirm button at this step here. Okay,
+
+Unknown 4:25
+so yeah, so not only is the current flow and I know in the current flow, it's basically at some point, the user clicks the button, and it sends off the message and it's kind of in the background, but it's doing everything the portal activity ends, which the negative is there's no messages going back to the portal if something failed and that back end kind of activity. But, you know, what is that back end activity that's occurring now versus it's going to be, you know, again, sequentially, the portal user is going to be waiting.
+
+Unknown 5:04
+Even though there'll be confirmed request rate, I mean,
+
+Unknown 5:07
+listen, right. Once before Submission role is involved. There is no waiting period for Portal team. They can they just show the thank you page and Come on. Move to the next next request. So,
+
+Unknown 5:21
+like it, it's kind of the hidden secret pay between the route portal and the route in the Rose ecosystem. It's look, it looks synchronous, but it's really asynchronous right now, and that, you know, we everyone's wild that fat comes up to bite us.
+
+Unknown 5:40
+But it goes out like what is requested like mail goes out that this request is received, but it is through the post submission rule mostly rules takes care of it sending emails and now
+
+Unknown 5:56
+so to mine, in addition to the rules being a saying, like Tom was talking about, best luck provides some kind of an orchestration by reprocessing or holding on the transaction right if something goes bad. There is a retry more investor.
+
+Unknown 6:13
+That is for process reauthorization. So not for the purpose like not the other like only only for the process reorganization, they have the retry mod, but once your request is failed once it will fail again, if it even though you try again.
+
+Unknown 6:33
+Okay, so what I'm saying is they're still great, good. Okay. So that it's that last box, the last
+
+Unknown 6:40
+box, right? Two boxes. You call that price? Yeah. Confirm request, and it's going during the process throughout there's Yeah,
+
+Unknown 6:46
+okay. So, so from a what you're proposing is that a send off and forget request from the portal? Or is it wait for a response for the end user to see if it worked with kind of architecture? Now
+
+Unknown 7:00
+also, they're not waiting. So what are we going to do with
+
+Unknown 7:04
+that right now? Let's say a send it off and forget it's basically Hey, we sent it we're done. The you know, is it is it now going to be click on portal and wait for the response architecture are
+
+Unknown 7:16
+being so because it is going to take time right to process. Wait out, we are not asking them to wait for two minutes and then wait to get the response. They are successfully able to submit or not. Once process like request is completed, they get the email in the whatever email they have configured to them their account, they will come back, send the send back that this is what you have requested. Anyhow, so that's the confirmation they received once it is done completely.
+
+Unknown 7:49
+Yeah, so my only question is basically so the last button up everything up until the last button is basically just this talk is passing through. Yeah, the last button. This talk is doing a little bit of value added stuff. Behind the scenes. It basically got the message. It's going through and doing error tracking stuff that's not reported up to the portal. So this last button, if you pull BizTalk out of it, you now need to go through and go okay, what's going to be the error handling report it needs
+
+Unknown 8:24
+to be like we have to create that error handling in the rules application. So suppose for any reason, we did not able to process anything, we have to shoot an email to PT just like you do right now. Okay to say that this particular transaction failed for this.
+
+Unknown 8:43
+That's what are they here to?
+
+Unknown 8:45
+Yes, yeah, that's right. Okay.
+
+Unknown 8:47
+Yeah, whether or not whether that but there's at least from a functionality perspective,
+
+Unknown 8:52
+because we're not sending out anything to the provider or user who is submitting the request that that error email comes to PTT. So be the team reviews it and then it takes it reach out, we reach out to business that these transaction reauthorization transaction fail, please re submitted.
+
+Unknown 9:12
+So, what I'll probably say Will the way that I'm probably getting in this a large part of you know, when you when you bring this when you bring this forward into the Thursday meeting, you know, the benefits are for this are kind of nebulous and it large largely be part of partially on you guys. Go, go go OpenType if you don't mind. Like kind of what you said. You know, what is this get to us and the more alarming thing that you said, Brother, my A Rahman my good. I think both of you said it was the we struggled to be able to to reconstruct what was being put in. And to me, that is far more alarming. And I would fix that before I fix that before I do this. I would get to a point where it's Mike. I remember one of our first interactions was when was when the C drive filled up one day and we didn't know about it and you spent like 40 hours straight trying to rebuild under the transactions. I'm not sure if you remember that. There's probably been a couple of them. Yeah.
+
+Unknown 10:19
+Our observability design for optim that is that is talking about if any failures in rules engine how do we reprocess and save the transaction
+
+Unknown 10:32
+in that's, that's the more alarming thing that I've that I heard from this, which is, which is the ability to reconstruct a transaction. You know, I see the benefits. I think it'll partially be come for you guys as an advocate and and Satya, who I think is also an advocate for this in terms of tech debt and removal, I get it. You're gonna get an approval, but the bad is the problem that you should be fixing first. If I if I had to rank tech list tech that list, the ability to reconstruct a transaction that has failed. This is getting a little bit better gets you one less component. It makes sense to do. But I worry about that for the team more.
+
+Unknown 11:22
+Yeah, you know, and another system that I worked with that we developed, we developed that into the system so that we save the XML that gets submitted to the system, and we can reprocess it if we wanted to, and we knew it was in the database and we could just flag it and reprocess it. And we don't have that.
+
+Unknown 11:37
+No and the the P team hears it more from me. But you guys, you guys hear it too from time to time. The ability to replay a transaction in current state, you know, Jeevan has a whole added potency conversation with me and what does the item potency mean, especially in wrestled prestage transactions with with an asynchronous process below it? But the ability to know what was happening in the diagnostic capabilities outstripping by far so you get approval for this. I don't know if it'll get you if you'll get the time approved for it because again, it's the advocacy and the benefit. Like why should I spend 700 hours on this versus something else? Is this the highest value thing that the team can be working on? If those questions come up during the review I know that they're you're supposed to be creating lists, but from what you're asking. Yeah. But I would strongly advocate that. We have discussions about that the replay and failed transaction tracking, like Jason said the hopefully where we can get to for observability my first three attempts didn't work out too well, but I think Jeep and Kumar are going to do better than me. Well, because he didn't work on anything, anything is better than zero. So he so you got approval. I think you might have problems depending on how people focus on this during the first review with Michelle's team or the second review after it's a feeling I can't prove it. It's a bring a product brought up here that you know,
+
+Unknown 13:19
+I mean, unless Yeah, you mean unless you put dollars dollar value around like the time it takes him to put we put, you know, put those results and you know, from a business perspective, and it's enough money, you then you may be but you know, this this would never go up well against something that's going to earn you money, right.
+
+Unknown 13:42
+But it also you know, it's the you know what other savings can we do in terms of if we had to spend 1000 hours to knock to increase people's efficiency by 1%. But again, that's part of the advocacy that you guys will have to do in the presentation such as I think you need to be able to work on the benefits Well, there's a lot of them used to be like I know the portal and Mikey you got to the window for a second no one's gonna notice it. It's you know, if it was part of the plan to go from one to four and then we've got another project for one to four and there were seven other of these then you got something but as a standalone, okay.
+
+Unknown 14:28
+It hadn't totally noticeable Yeah,
+
+Unknown 14:31
+no, but as far as an overall plan and it's something so, a I think you got your approval unless somebody else fundamentally objects. I think I think you might have a difficult time in terms of the in terms of the pricing or advocacy, but not not too much at one Chuck, thanks. Okie dokie. Thanks
+
+Unknown 14:57
+for your time, David, everybody.
+
+Unknown 14:58
+Hey, hey, what do you have Dave had two questions. The first is there is a project for a 277 Compliance would they want to go through and collect all the rejection messages or the 277 and then pass it back to the provider? On the letters the EDI and also displayed in the portal to
+
+Unknown 15:19
+NCAA? Right? Yeah,
+
+Unknown 15:22
+yeah. Has there been anything initiated? That we've seen like anything come through yet on that?
+
+Unknown 15:28
+Oh, yeah. We we swag it at first. The So first, I see projects like five times before they quit they ever get done. Okay, even as an ER request first and we came up with a high estimate. Part of it was any this was it part of the problem of the swag process? You know, I don't necessarily like the way that the management committee is doing er intake because my spreads are gonna be high because you don't have a lot of reach.
+
+Unknown 15:59
+I personally think it might be a little bit low, but that's fine.
+
+Unknown 16:03
+So it came in as an ER they didn't get the nuggets into 750. Then it came in as a charter. Let me see if I can get a slide. And now it's in production because I do want to bring it up a the orientation process is a wee bit broken. It's not prompt pay right now. 77. Ca There we go. Swag one that
+
+Unknown 16:27
+I just asked you this is like, oh, yeah, no, it's we're gonna be having a discussion on that coming up soon. Or you're just like, you're just we're still waiting on other people to initiate it.
+
+Unknown 16:36
+Oh, yeah. The we've gotten through the charter in the swag now. Now. I think that it's in the prioritization madness. Do you guys have access to the prioritization sheets? Yeah,
+
+Unknown 16:46
+yeah, I think the updated one is a bit kind of as they they put some on hold, and then they add, I don't know if this is going to reflect it. But there's there's an updated one that might not be out there in SharePoint right now.
+
+Unknown 17:01
+Yeah, it's yeah. So but yeah, but but
+
+Unknown 17:06
+based upon the updates that kind of got putting some stuff on hold and changing the priorities, it definitely got moved up, you know, the list.
+
+Unknown 17:14
+Yeah. Because it, you know, you can call a complaint related. It's not really complaint related to provider education related. I get it Yeah, we add that that's fine.
+
+Unknown 17:25
+Yeah, I've kind of finally the the user complaints to just get get a little blank check and stuff and sometimes frustrating me but
+
+Unknown 17:38
+I need a push. I don't know what you're talking about.
+
+Unknown 17:41
+But that's the gist wanted to find out as if it's, you know, like, yeah, we're there's gonna be some meetings coming up, or is it still kind of not not get to that point? We're kind of
+
+Unknown 17:52
+it seems like, it seems like in prioritization, I wouldn't be surprised if it comes back up, you know, with the shifting to focus on you know, quote unquote, important things and compliance, you know, because this was tagged early. I think it would probably start up in the next week. Okay, but yeah, I expect it to just start up three weeks ago. Yeah. Just been.
+
+Unknown 18:15
+Now the reason I asking is, from my team perspective, it's going to be relatively simple activity. But the end to end architecture that provides is going to be taken a month off to go to India and I just wanted to go through and just try to make sure that he gets pulled into the end to end flow architecture. Before we did it before it goes to India. That was all. Yeah,
+
+Unknown 18:38
+hopefully, hopefully, we're not going to make too many changes. I really hope those smalls hit because there's 1000 hours should be able to get it done. Yeah,
+
+Unknown 18:48
+but just just be aware that there's going to be HPV rolls, processes each the rejection messages and says, Hey, do I tend to reject the claim? What do I do? You now we're going to have multiple there's going to have to be requirements regarding Hey, what do I do with multiple rejections? The number of rejection messages that you can get is actually four levels and it's unlimited Dave, you can have an unlimited number of rejection messages that for different levels. So 277 technic handles that but we're gonna have to say hey, is the portal do is going to display an infinite number of messages is letters going to have to put an infinite number of messages there's going to be some things to consider. Yeah,
+
+Unknown 19:32
+and I'm hoping that I'm hoping that it doesn't go crazy like that. You know, we didn't when I when I took a look at the dissent, it was like okay, we you know, holy, I have a feeling the business deliverable and the requirements aren't going to match up and that's, yeah, I just, hopefully, hopefully the the the additional business requirements that go beyond assumptions still be handleable and 1000.
+
+Unknown 19:56
+Yeah, yeah. And then and then there's a whole thing of clarification on the business requirements for displaying special characters in the portal. You know, what does that mean? Does that mean that if somebody sends through a hex character for bold they wouldn't be so bold in the portal?
+
+Unknown 20:14
+Rejection response, there's nothing about formatting formatting is formatting.
+
+Unknown 20:18
+take take take a look at the requirement. It's kind of it's a little bit there's a maybe maybe you're going interpretated that it's not as open ended as me so that though
+
+Unknown 20:27
+I met the requirements, I'm only looking at the charter level right now. You should document the requirements.
+
+Unknown 20:35
+But anyways, that would have been just take up too much time on that one. And then second one is from a long term architecture approach or like, from a Message Broker perspective of coordination transactions have have we decided on a long term approach for the company.
+
+Unknown 20:56
+You know, when we introduce Kafka, Kafka has been a breath of fresh air. And we've started using it but it hasn't been the game that we've hoped for, which is, you know, Pub Sub model where multiple producers, multiple consumers and, you know, part of part of conversation with John, the new CTO is going to be you know, where do we want to be able to go how much how much do we look at what our application footprint is like in in in one year in five years, in 10 years? The Kafka model works if you've got multiple producers, multiple consumers, but you know, there's something to be said about traditional use a Message Broker and use orchestration. We don't have that we don't necessarily have systems that have to work like that. If if I if I just say what do I want most of the world the two things I want most in the world well, three things I will most in the world. I want to use their identity platform. I want to I want to enterprise DOCUMENT MANAGEMENT storage system was the third thing. identity documents forgotten the third thing I guess I want to memory it was on the tip of my tongue was related to messaging.
+
+Unknown 22:13
+He went memory is the third. Yeah, it's
+
+Unknown 22:17
+the three big things but you know, those holds us back on identity user management. Now I like the way that a lot of our applications work. Now. You know, a lot of what we do is ETL or ETL. in weird ways. If we were if we were to have a different footprint of applications, maybe you could say we need more of a message bus and maybe we need more of an orchestration. It's just not the way our applications work. And then it goes to well what should our be our applications looking at what our business should be in five years. And that's what my goal was when I came in six years ago when we didn't exactly get their makeup this was, was the first but it was didn't really get the way it should have. Oh, that's it splitting the rules engine splitting the rules ecosystem into ecosystem in engine. So that we you know, rules engine is now a proper rules engine and everyone uses it in its global
+
+Unknown 23:23
+data because it gets to the, from what Mike presented with regard to the three artists that hey, does talk straight past or is not doing any orchestration coordination for you eliminate. Okay, now there's a piece where this talk is doing a Message Broker coordination activity for you. You know, what's the direction we want to go to for those scenarios in the future up? Yeah, they're gonna go through in years. We want to go through and use the sock as the middleware for that we want to go through and, you know, have Portal do the coordination itself. We want to have something else do the coordination, those kind of architectural, you know, guidance of what what direction we want to go in the future if you get to a point and saying, Hey, here's where we should be leaning towards that would be helpful.
+
+Unknown 24:09
+And I think I think those those versus the things I ticked off the rules ecosystem edge and document management and user I think that all those feed into how can a Message Broker rail bus you know, it's there's got to be a starting point somewhere in terms of in terms of what our evolution becomes. For me, though, and you know, our business and product you know, they have they have their own priority. So, if they want if they wish for, I don't know, the UN system comes into be, too I get my document management system, and probably not an investment in time, but yeah, those are those are going to be discussions that are probably going to happen over the next six months or so.
+
+Unknown 24:51
+Okay, well, let me know. Yeah, just because we're kind of, you know, everybody's take lookouts and put more stuff in this talk. Take take stuff out of this talk to those that said, yeah,
+
+Unknown 25:03
+it's ad hoc. I don't like ad hoc decisions. don't like them. I like lists of tech. Debt and specific games that we get from them. Along with a proceeds prior direction, and if, you know, maybe, maybe our old direction didn't make sense. And we gotta adjust.
+
+Unknown 25:26
+It tells that thanks. Thanks for next couple minutes.
+
+Unknown 25:29
+No worries. Good luck to all thanks for spending a little bit extra time in needed. Have fun in your in, in, in, in the financial presentations to follow.
+
+Unknown 25:40
+Yeah, thanks again, David. Team. Appreciate your time and input on that stuff. Thank
+
+Unknown 25:44
+you from Good luck, I'll succeed Excellent.
+
+This transcript was generated by https://otter.ai
